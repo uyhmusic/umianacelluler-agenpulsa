@@ -595,13 +595,18 @@
                 font-size: 0.85rem;
             }
         }
-        .button-price-list-icon {
-  display: inline-flex; /* Menggunakan flexbox agar ikon dan teks sejajar */
-  align-items: center; /* Pusatkan secara vertikal */
-  background-color: #28a745; /* Contoh warna hijau */
+        .center-container {
+  text-align: center; /* Ini yang membuat konten di dalamnya rata tengah */
+  padding: 20px; /* Contoh padding agar ada ruang */
+}
+
+/* Gaya tombol dari contoh sebelumnya */
+.button-price-list-icon {
+  display: inline-flex;
+  align-items: center;
+  background-color: #28a745;
   color: white;
   padding: 10px 20px;
-  text-align: center;
   text-decoration: none;
   border-radius: 5px;
   font-family: Arial, sans-serif;
@@ -610,7 +615,7 @@
 }
 
 .button-price-list-icon i {
-  margin-right: 8px; /* Jarak antara ikon dan teks */
+  margin-right: 8px;
 }
 
 .button-price-list-icon:hover {
@@ -695,9 +700,11 @@
             </div>
         </section>
         <div>
-            <a href="daftar-harga.html" class="button-price-list-icon">
-  <i class="fas fa-tags"></i> Lihat Daftar Harga
-            </a>
+            <div class="center-container">
+  <a href="daftar-harga.html" class="button-price-list-icon">
+    <i class="fas fa-tags"></i> Lihat Daftar Harga
+  </a>
+            </div>
         </div>
         <section id="layanan">
             <h2 style="color: #af0606; text-align: center; margin: 30px 0;">Layanan Kami</h2>
