@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan - UMIANA CELLULLER</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #FFF8E1;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            color: #FF8F00;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .slogan {
+            color: #777;
+            font-style: italic;
+        }
+        
+        /* Search Box */
+        .search-container {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #FFE0B2;
+            border-radius: 30px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .search-input:focus {
+            border-color: #FF8F00;
+            box-shadow: 0 0 10px rgba(255, 143, 0, 0.2);
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #FF8F00;
+        }
+        
+        /* Category Filter */
+        .category-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .category-btn {
+            padding: 8px 15px;
+            background: #FFF3E0;
+            border: 1px solid #FFE0B2;
+            border-radius: 20px;
+            color: #FF8F00;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background: #FF8F00;
+            color: white;
+        }
+        
+        /* Service List */
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .service-card {
+            background: #FFF;
+            border: 1px solid #FFE0B2;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 143, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 2rem;
+            color: #FF8F00;
+            margin-bottom: 15px;
+        }
+        
+        .service-name {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .service-providers {
+            color: #555;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+        
+        .service-desc {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .service-admin {
+            color: #FF8F00;
+            font-weight: bold;
+        }
+        
+        .service-note {
+            color: #888;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 40px 0;
+            color: #888;
+            grid-column: 1 / -1;
+        }
+        
+        /* Back Button */
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: #FF8F00;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: #FF6F00;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .service-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">UMIANA CELLULLER</div>
+            <div class="slogan">Layanan Lengkap dengan Harga Terbaik</div>
+        </div>
+        
+        <!-- Search Box -->
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Cari layanan... (contoh: Pulsa, PLN, Transfer)" id="searchInput">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+        
+        <!-- Category Filter -->
+        <div class="category-filter" id="categoryFilter">
+            <div class="category-btn active" data-category="all">Semua</div>
+            <div class="category-btn" data-category="pulsa">Pulsa & Data</div>
+            <div class="category-btn" data-category="pembayaran">Pembayaran</div>
+            <div class="category-btn" data-category="transfer">Transfer</div>
+            <div class="category-btn" data-category="lainnya">Lainnya</div>
+        </div>
+        
+        <!-- Service List -->
+        <div class="service-list" id="serviceList">
+            <!-- Pulsa & Data -->
+            <div class="service-card" data-category="pulsa" data-search="pulsa telkomsel xl indosat tri axis smartfren by.u">
+                <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3 class="service-name">Pulsa All Operator</h3>
+                <p class="service-desc">Isi pulsa semua operator dengan proses cepat</p>
+                                <p class="service-providers">Tersedia: Telkomsel, XL, Indosat, Tri, Axis, Smartfren, by.U & Provider Lainya</p>
+                <p class="service-admin">Admin: Rp 1.500-5.000</p>
+                <p class="service-note">*Harga bisa berubah sewaktu-waktu</p>
+            </div>
+            
+            <div class="service-card" data-category="pulsa" data-search="paket data internet kuota xl telkomsel indosat tri axis">
+                <div class="service-icon"><i class="fas fa-wifi"></i></div>
+                <h3 class="service-name">Paket Data</h3>
+                <p class="service-desc">Kuota internet semua operator</p>
+                <p class="service-providers">Tersedia: Telkomsel, XL, Indosat, Tri, Axis, Smartfren, by.U & Provider Lainya</p>
+                <p class="service-admin">Admin: Rp 2.000-5.000</p>
+                <p class="service-note">*Harga bisa berubah sewaktu-waktu</p>
+            </div>
+            
+            <!-- Pembayaran -->
+            <div class="service-card" data-category="pembayaran" data-search="pln token listrik bayar">
+                <div class="service-icon"><i class="fas fa-bolt"></i></div>
+                <h3 class="service-name">Token PLN</h3>
+                <p class="service-desc">Isi ulang token listrik semua daya</p>
+                <p class="service-providers">Tersedia : Prabayar & Pascabayar</p>
+                <p class="service-admin">Admin: Rp 1.000</p>
+                <p class="service-note">*Harga bisa berubah sewaktu-waktu</p>
+            </div>
+            
+            <div class="service-card" data-category="pembayaran" data-search="wifi indihome first media biznet bayar tagihan">
+                <div class="service-icon"><i class="fas fa-wifi"></i></div>
+                <h3 class="service-name">Pembayaran Wifi</h3>
+                <p class="service-desc">Pembayaran tagihan internet rumah</p>
+                <p class="service-providers">Tersedia : Indihome, First Media, Biznet, MNC Play</p>
+                <p class="service-admin">Admin: Rp 2.000-5.000</p>
+                <p class="service-note">*Harga bisa berubah sewaktu-waktu</p>
+            </div>
+            
+            <!-- Transfer -->
+            <div class="service-card" data-category="transfer" data-search="transfer bank bri bni mandiri bca">
+                <div class="service-icon"><i class="fas fa-exchange-alt"></i></div>
+                <h3 class="service-name">Transfer Bank</h3>
+                <p class="service-desc">Transfer antar bank *Terbatas</p>
+                <p class="service-providers">Tersedia : BRI, BNI, Mandiri, BCA, Bank Lain</p>
+                <p class="service-admin">Admin: Rp 3.000 - 15.000</p>
+                <p class="service-note">*Harga bisa berubah sewaktu-waktu</p>
+            </div>
+            
+            <div class="service-card" data-category="transfer" data-search="dana ovo gopay linkaja e-wallet">
+                <div class="service-icon"><i class="fas fa-wallet"></i></div>
+                <h3 class="service-name">Transfer E-Wallet</h3>
+                                <p class="service-desc">Transfer saldo antar dompet digital</p>
+                <p class="service-providers">Tersedia : Dana, OVO, Gopay</p>
+                <p class="service-admin">Admin: Rp 2.000-8.000</p>
+                <p class="service-note">*Harga bisa berubah sewaktu-waktu</p>
+            </div>
+            
+            <!-- Lainnya -->
+            <div class="service-card" data-category="lainnya" data-search="tarik tunai cash tanpa kartu dana ovo gopay bri">
+                <div class="service-icon"><i class="fas fa-money-bill-wave"></i></div>
+                <h3 class="service-name">Tarik Tunai</h3>
+                <p class="service-desc">Tarik uang tanpa ribet *Terbatas</p>
+                <p class="service-providers">Tersedia : Dana, OVO, Gopay, BRI</p>
+                
+                <p class="service-admin">Admin: Rp 2.000 - 10.000</p>
+                <p class="service-note">*Harga bisa berubah sewaktu-waktu</p>
+            </div>
+            
+            <div class="service-card" data-category="lainnya" data-search="e-toll jalan tol saldo mandiri bri bni">
+                <div class="service-icon"><i class="fas fa-car"></i></div>
+                <h3 class="service-name">Isi Ulang E-Toll</h3>
+                <p class="service-desc">Top up saldo e-toll semua provider</p>
+                <p class="service-providers">Tersedia : Cash, BRI</p>
+                <p class="service-admin">Admin: Rp 2.500-8.000</p>
+                <p class="service-note">*Harga bisa berubah sewaktu-waktu</p>
+            </div>
+        </div>
+        
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Kembali ke Beranda
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            // Filter by category
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active button
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    filterServices(category, searchInput.value.toLowerCase());
+                });
+            });
+            
+            // Search functionality
+            searchInput.addEventListener('input', function() {
+                const activeCategory = document.querySelector('.category-btn.active');
+                const category = activeCategory.getAttribute('data-category');
+                filterServices(category, this.value.toLowerCase());
+            });
+            
+            function filterServices(category, searchTerm) {
+                let hasVisibleItems = false;
+                
+                serviceCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    const searchData = card.getAttribute('data-search');
+                    const matchesCategory = category === 'all' || cardCategory === category;
+                    const matchesSearch = searchData.includes(searchTerm);
+                    
+                    if (matchesCategory && matchesSearch) {
+                        card.style.display = 'block';
+                        hasVisibleItems = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Show empty state if no results
+                const emptyState = document.querySelector('.empty-state');
+                if (!hasVisibleItems) {
+                    if (!emptyState) {
+                        const serviceList = document.getElementById('serviceList');
+                        const emptyDiv = document.createElement('div');
+                        emptyDiv.className = 'empty-state';
+                        emptyDiv.innerHTML = '<p>Tidak ditemukan layanan yang sesuai</p>';
+                        serviceList.appendChild(emptyDiv);
+                    }
+                } else if (emptyState) {
+                    emptyState.remove();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
