@@ -721,4 +721,426 @@
             </div>
         </div>
         <section id="layanan">
-            <h2 style="color: #af0606; text-align: ce
+            <h2 style="color: #af0606; text-align: center; margin: 30px 0;">Layanan Kami</h2>
+            <div class="services">
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Pulsa & Paket Data</h3>
+                    <p>Semua operator dengan proses cepat dan mudah</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Token Listrik PLN</h3>
+                    <p>Prabayar semua nominal, proses instan</p>
+                </div>
+                
+                 <div class="service-card">
+                    <div class="icon"><i class="fas fa-road"></i></div>
+                    <h3>Pembayaran E-Toll</h3>
+                    <p>Bayar Dengan Santai</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-tint"></i></div>
+                    <h3>Pembayaran PDAM</h3>
+                    <p>Bayar tagian air dengan mudah</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-wifi"></i></div>
+                    <h3>Pembayaran Wifi</h3>
+                    <p>Indihome, Biznet, First Media, dan lainnya</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-wallet"></i></div>
+                    <h3>Transfer E-Wallet</h3>
+                    <p>Dana, OVO, Gopay, LinkAja, dan lainnya</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-exchange-alt"></i></div>
+                    <h3>Transfer Bank</h3>
+                    <p>Semua rekening bank dengan biaya terjangkau</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <h3>Tarik Tunai</h3>
+                    <p>Tarik tunai tanpa kartu, aman dan praktis</p>
+                </div>
+
+            </div>
+        </section>
+        
+        <section id="kontak">
+            <div class="contact">
+                <h2>Hubungi Kami</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Lokasi</h4>
+                            <p>Jl. Petsibenem No. 03, Duduksampeyan</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4>Telepon/WA</h4>
+                            <p>085175483758</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>umianacelluler@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Jam Buka</h4>
+                            <p>Senin-Minggu: 08.00 - 21.00 WIB</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+           <section id="ulasan" class="customer-reviews">
+            <h2>Ulasan Pembeli</h2>
+            <form id="review-form" class="review-form">
+                <div class="form-group">
+                    <label for="review-name">Nama Anda:</label>
+                    <input type="text" id="review-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Rating:</label>
+                    <div class="rating-input">
+                        <i class="fas fa-star star" data-rating="1"></i>
+                        <i class="fas fa-star star" data-rating="2"></i>
+                        <i class="fas fa-star star" data-rating="3"></i>
+                        <i class="fas fa-star star" data-rating="4"></i>
+                        <i class="fas fa-star star" data-rating="5"></i>
+                    </div>
+                    <input type="hidden" id="review-rating" value="0" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="review-comment">Komentar Anda:</label>
+                    <textarea id="review-comment" required></textarea>
+                </div>
+                
+                <button type="submit">Kirim Ulasan</button>
+            </form>
+
+            <div class="reviews-list" id="reviews-container">
+                <div class="empty-reviews">Belum ada ulasan. Jadilah yang pertama!</div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p><b>&copy; 2025 UmiAna CeLL. All rights reserved</b></p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/umianacelluler?utm_source=ig_web_button_share_sheet&igsh=MXF4M3g4NTV5d2R6OQ==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="http://wa.me/6285175483758" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Improved Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            // Prevent scrolling when menu is open
+            if (navLinks.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Slider Functionality
+        const slides = document.getElementById('slides');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+        
+        function showSlide(index) {
+            slides.style.transform = `translateX(-${index * 100}%)`;
+            
+            // Update dots
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+            
+            currentSlide = index;
+        }
+        
+        // Click event for dots
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                showSlide(parseInt(dot.getAttribute('data-index')));
+            });
+        });
+        
+        // Auto slide change
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % dots.length;
+            showSlide(currentSlide);
+        }, 5000);
+        
+        // Running Text Animation (pastikan elemen marquee ada jika ingin pakai ini)
+        // const marquee = document.querySelector('.marquee');
+        // if (marquee) {
+        //     const marqueeContent = marquee.innerHTML;
+        //     marquee.innerHTML = marqueeContent + ' • ' + marqueeContent; // Duplicate for seamless loop
+        // }
+
+        // --- Fitur Komentar dan Rating Pembeli (BARU) ---
+
+        // Data awal ulasan jika localStorage kosong
+        const initialReviews = [
+            {
+                name: "Siska",
+                rating: 5,
+                comment: "Proses Sangat cepat. Tarik Tunai Langsung Cair, Josss.",
+                date: "2025-05-06"
+            },
+            {
+                name: "Rafi",
+                rating: 5,
+                comment: "Sangat puas dengan layanan Umiana Cell! Pulsa cepat masuk, mantap🔥.",
+                date: "2025-04-12"
+            },
+            {
+                name: "Aziz",
+                rating: 4,
+                comment: "Harga bersaing, proses lumayan cepat. Kadang sedikit antri kalau jam ramai, tapi overall bagus.",
+                date: "2023-02-10"
+            },
+            {
+                name: "Ainul",
+                rating: 5,
+                comment: "Layanan sangat membantu, transfer cepat dan mudah.",
+                date: "2025-05-11"
+            },
+            {
+                name: "Citra",
+                rating: 5,
+                comment: "Top up e wallet lancar. Terkadang ada sedikit delay, tapi joss layananyaa.",
+                date: "2025-05-13"
+            }
+        ];
+
+        // Fungsi untuk menyimpan ulasan ke localStorage
+        function saveReviews(reviews) {
+            localStorage.setItem('umiana_reviews', JSON.stringify(reviews));
+        }
+
+        // Fungsi untuk memuat ulasan dari localStorage
+        function loadReviews() {
+            let reviews = JSON.parse(localStorage.getItem('umiana_reviews'));
+            
+            // Jika belum ada ulasan di localStorage, atau jika isinya tidak sama dengan initialReviews
+            // kita akan menggunakan initialReviews sebagai dasar.
+            if (!reviews || reviews.length === 0 || JSON.stringify(reviews.map(r => r.name + r.date)) !== JSON.stringify(initialReviews.map(r => r.name + r.date))) { 
+                reviews = initialReviews;
+            } else { // Jika ada data di localStorage, gabungkan dengan initialReviews (hanya tambahkan yang belum ada)
+                const existingReviewKeys = new Set(reviews.map(r => r.name + r.date)); 
+                initialReviews.forEach(initialReview => {
+                    if (!existingReviewKeys.has(initialReview.name + initialReview.date)) {
+                        reviews.push(initialReview); 
+                    }
+                });
+            }
+            
+            // Selalu sortir ulang ulasan berdasarkan tanggal terbaru di atas
+            reviews.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            saveReviews(reviews); // Selalu simpan kembali (terutama jika ada penambahan/perubahan dari initialReviews)
+            return reviews;
+        }
+
+        // Fungsi untuk menampilkan ulasan
+        function displayReviews() {
+            const reviews = loadReviews();
+            const container = document.getElementById('reviews-container');
+            
+            if (reviews.length === 0) {
+                container.innerHTML = '<div class="empty-reviews">Belum ada ulasan. Jadilah yang pertama!</div>';
+                return;
+            }
+            
+            container.innerHTML = ''; // Kosongkan container sebelum mengisi ulang
+            
+            reviews.forEach(review => {
+                const reviewElement = document.createElement('div');
+                reviewElement.className = 'review-item';
+                
+                // Buat avatar dari inisial nama
+                const initials = review.name.split(' ').map(n => n[0]).join('').toUpperCase();
+                
+                // Buat bintang rating
+                let stars = '';
+                for (let i = 0; i < 5; i++) {
+                    if (i < review.rating) {
+                        stars += '<i class="fas fa-star star"></i>'; // Bintang terisi
+                    } else {
+                        stars += '<i class="far fa-star star"></i>'; // Bintang kosong
+                    }
+                }
+                
+                reviewElement.innerHTML = `
+                    <div class="review-avatar">${initials}</div>
+                    <div class="review-content">
+                        <div class="review-name">${review.name}</div>
+                        <div class="review-rating">${stars}</div>
+                        <div class="review-date">${review.date}</div>
+                        <div class="review-comment">${review.comment}</div>
+                    </div>
+                `;
+                
+                container.appendChild(reviewElement);
+            });
+        }
+
+        // Fungsi untuk menangani pengiriman form ulasan
+        function addReview(event) {
+            event.preventDefault(); // Mencegah form submit dan refresh halaman
+            
+            const nameInput = document.getElementById('review-name');
+            const ratingInput = document.getElementById('review-rating');
+            const commentInput = document.getElementById('review-comment');
+
+            const name = nameInput.value.trim(); // Gunakan .trim() untuk menghilangkan spasi kosong
+            const rating = parseInt(ratingInput.value);
+            const comment = commentInput.value.trim();
+
+            if (!name || rating === 0 || !comment) {
+                alert('Harap isi semua field dan berikan rating!');
+                return;
+            }
+            
+            const today = new Date();
+            const dateStr = today.toISOString().split('T')[0]; // Format YYYY-MM-DD
+            
+            const reviews = loadReviews(); // Muat ulasan yang sudah ada
+            
+            const newReview = {
+                name,
+                rating,
+                comment,
+                date: dateStr
+            };
+            
+            reviews.unshift(newReview); // Tambahkan ulasan baru di awal array
+            saveReviews(reviews); // Simpan kembali ke localStorage
+            displayReviews(); // Tampilkan ulang ulasan
+            
+            // Reset form dan tampilan bintang
+            nameInput.value = '';
+            commentInput.value = '';
+            ratingInput.value = 0;
+            resetReviewStarRating();
+            
+            alert('Terima kasih atas ulasan Anda!');
+        }
+
+        // Fungsi untuk mengatur rating bintang di form
+        function setupReviewStarRating() {
+            const stars = document.querySelectorAll('.review-form .rating-input .star');
+            const ratingInput = document.getElementById('review-rating');
+            
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const rating = parseInt(this.getAttribute('data-rating'));
+                    ratingInput.value = rating;
+                    
+                    // Update tampilan bintang
+                    stars.forEach((s, index) => {
+                        if (index < rating) {
+                            s.classList.add('fas');
+                            s.classList.remove('far');
+                        } else {
+                            s.classList.add('far');
+                            s.classList.remove('fas');
+                        }
+                    });
+                });
+
+                // Efek hover untuk bintang
+                star.addEventListener('mouseover', function() {
+                    const hoverRating = parseInt(this.getAttribute('data-rating'));
+                    stars.forEach((s, index) => {
+                        if (index < hoverRating) {
+                            s.style.color = '#FFC107'; // Warna saat hover
+                        } else {
+                            s.style.color = '#ccc'; // Warna default
+                        }
+                    });
+                });
+
+                star.addEventListener('mouseout', function() {
+                    const currentRating = parseInt(ratingInput.value);
+                    stars.forEach((s, index) => {
+                        if (index < currentRating) {
+                            s.classList.add('fas');
+                            s.classList.remove('far');
+                            s.style.color = '#FFC107';
+                        } else {
+                            s.classList.add('far');
+                            s.classList.remove('fas');
+                            s.style.color = '#ccc';
+                        }
+                    });
+                });
+            });
+        }
+
+        // Fungsi untuk mereset tampilan bintang rating di form
+        function resetReviewStarRating() {
+            const stars = document.querySelectorAll('.review-form .rating-input .star');
+            stars.forEach(star => {
+                star.classList.add('far');
+                star.classList.remove('fas');
+                star.style.color = '#ccc'; // Reset warna ke default
+            });
+        }
+
+        // Inisialisasi saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inisialisasi slider dan hamburger menu
+            showSlide(currentSlide); // Pastikan slider dimulai dengan benar
+            
+            // Inisialisasi fitur ulasan
+            displayReviews();
+            setupReviewStarRating();
+            
+            document.getElementById('review-form').addEventListener('submit', addReview);
+        });
+    </script>
+</body>
+</html>
