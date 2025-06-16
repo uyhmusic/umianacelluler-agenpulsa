@@ -858,289 +858,234 @@
         </div>
     </footer>
     
-    <script>
-        // Improved Hamburger Menu
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
+   <script>
+    // Improved Hamburger Menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
         
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            
-            // Prevent scrolling when menu is open
-            if (navLinks.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
-        });
-        
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-        
-        // Slider Functionality
-        const slides = document.getElementById('slides');
-        const dots = document.querySelectorAll('.slider-dot');
-        let currentSlide = 0;
-        
-        function showSlide(index) {
-            slides.style.transform = `translateX(-${index * 100}%)`;
-            
-            // Update dots
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[index].classList.add('active');
-            
-            currentSlide = index;
+        // Prevent scrolling when menu is open
+        if (navLinks.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
         }
-        
-        // Click event for dots
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                showSlide(parseInt(dot.getAttribute('data-index')));
-            });
+    });
+    
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            document.body.style.overflow = '';
         });
+    });
+    
+    // Slider Functionality
+    const slides = document.getElementById('slides');
+    const dots = document.querySelectorAll('.slider-dot');
+    let currentSlide = 0;
+    
+    function showSlide(index) {
+        slides.style.transform = `translateX(-${index * 100}%)`;
         
-        // Auto slide change
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % dots.length;
-            showSlide(currentSlide);
-        }, 5000);
+        // Update dots
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
         
-        // Running Text Animation (pastikan elemen marquee ada jika ingin pakai ini)
-        // const marquee = document.querySelector('.marquee');
-        // if (marquee) {
-        //     const marqueeContent = marquee.innerHTML;
-        //     marquee.innerHTML = marqueeContent + ' • ' + marqueeContent; // Duplicate for seamless loop
-        // }
+        currentSlide = index;
+    }
+    
+    // Click event for dots
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            showSlide(parseInt(dot.getAttribute('data-index')));
+        });
+    });
+    
+    // Auto slide change
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % dots.length;
+        showSlide(currentSlide);
+    }, 5000);
+    
+    // Running Text Animation (pastikan elemen marquee ada jika ingin pakai ini)
+    // const marquee = document.querySelector('.marquee');
+    // if (marquee) {
+    //      const marqueeContent = marquee.innerHTML;
+    //      marquee.innerHTML = marqueeContent + ' • ' + marqueeContent; // Duplicate for seamless loop
+    // }
 
-        // --- Fitur Komentar dan Rating Pembeli (BARU) ---
+    // --- Fitur Komentar dan Rating Pembeli (BARU) ---
 
-        // Data awal ulasan jika localStorage kosong
-        const initialReviews = [
-            {
-                name: "Siska",
-                rating: 5,
-                comment: "Proses Sangat cepat. Tarik Tunai Langsung Cair, Josss",
-                date: "2025-05-06"
-            },
-            {
-                name: "Rafi",
-                rating: 5,
-                comment: "Sangat puas dengan layanan Umiana Cell! Pulsa cepat masuk, mantap🔥",
-                date: "2025-04-12"
-            },
-            {
-                name: "Aziz",
-                rating: 4,
-                comment: "Harga bersaing, proses lumayan cepat. Kadang sedikit antri kalau jam ramai, tapi baguslah👍🏻",
-                date: "2023-02-10"
-            },
-            {
-                name: "Ainul",
-                rating: 5,
-                comment: "Layanan sangat membantu, transfer cepat dan mudah👍🏻",
-                date: "2025-05-11"
-            },
-            {
-                name: "Citra",
-                rating: 5,
-                comment: "Top up e wallet lancar. Terkadang ada sedikit delay, tapi joss layanan nyaa",
-                date: "2025-05-13"
-            }
-        ];
-
-        // Fungsi untuk menyimpan ulasan ke localStorage
-        function saveReviews(reviews) {
-            localStorage.setItem('umiana_reviews', JSON.stringify(reviews));
+    // Data awal ulasan jika localStorage kosong
+    const initialReviews = [
+        {
+            name: "Siska",
+            rating: 5,
+            comment: "Proses Sangat cepat. Tarik Tunai Langsung Cair, Josss",
+            date: "2025-05-06"
+        },
+        {
+            name: "Rafi",
+            rating: 5,
+            comment: "Sangat puas dengan layanan Umiana Cell! Pulsa cepat masuk, mantap🔥",
+            date: "2025-04-12"
+        },
+        {
+            name: "Aziz",
+            rating: 4,
+            comment: "Harga bersaing, proses lumayan cepat. Kadang sedikit antri kalau jam ramai, tapi baguslah👍🏻",
+            date: "2023-02-10"
+        },
+        {
+            name: "Ainul",
+            rating: 5,
+            comment: "Layanan sangat membantu, transfer cepat dan mudah👍🏻",
+            date: "2025-05-11"
+        },
+        {
+            name: "Citra",
+            rating: 5,
+            comment: "Top up e wallet lancar. Terkadang ada sedikit delay, tapi joss layanan nyaa",
+            date: "2025-05-13"
         }
+    ];
 
-        // Fungsi untuk memuat ulasan dari localStorage
-        function loadReviews() {
-            let reviews = JSON.parse(localStorage.getItem('umiana_reviews'));
-            
-            // Jika belum ada ulasan di localStorage, atau jika isinya tidak sama dengan initialReviews
-            // kita akan menggunakan initialReviews sebagai dasar.
-            if (!reviews || reviews.length === 0 || JSON.stringify(reviews.map(r => r.name + r.date)) !== JSON.stringify(initialReviews.map(r => r.name + r.date))) { 
-                reviews = initialReviews;
-            } else { // Jika ada data di localStorage, gabungkan dengan initialReviews (hanya tambahkan yang belum ada)
-                const existingReviewKeys = new Set(reviews.map(r => r.name + r.date)); 
-                initialReviews.forEach(initialReview => {
-                    if (!existingReviewKeys.has(initialReview.name + initialReview.date)) {
-                        reviews.push(initialReview); 
-                    }
-                });
-            }
-            
-            // Selalu sortir ulang ulasan berdasarkan tanggal terbaru di atas
-            reviews.sort((a, b) => new Date(b.date) - new Date(a.date));
-            
-            saveReviews(reviews); // Selalu simpan kembali (terutama jika ada penambahan/perubahan dari initialReviews)
-            return reviews;
-        }
+    // Fungsi untuk menyimpan ulasan ke localStorage
+    function saveReviews(reviews) {
+        localStorage.setItem('umiana_reviews', JSON.stringify(reviews));
+    }
 
-        // Fungsi untuk menampilkan ulasan
-        function displayReviews() {
-            const reviews = loadReviews();
-            const container = document.getElementById('reviews-container');
-            
-            if (reviews.length === 0) {
-                container.innerHTML = '<div class="empty-reviews">Belum ada ulasan. Jadilah yang pertama!</div>';
-                return;
-            }
-            
-            container.innerHTML = ''; // Kosongkan container sebelum mengisi ulang
-            
-            reviews.forEach(review => {
-                const reviewElement = document.createElement('div');
-                reviewElement.className = 'review-item';
-                
-                // Buat avatar dari inisial nama
-                const initials = review.name.split(' ').map(n => n[0]).join('').toUpperCase();
-                
-                // Buat bintang rating
-                let stars = '';
-                for (let i = 0; i < 5; i++) {
-                    if (i < review.rating) {
-                        stars += '<i class="fas fa-star star"></i>'; // Bintang terisi
-                    } else {
-                        stars += '<i class="far fa-star star"></i>'; // Bintang kosong
-                    }
+    // Fungsi untuk memuat ulasan dari localStorage
+    function loadReviews() {
+        let reviews = JSON.parse(localStorage.getItem('umiana_reviews'));
+        
+        // Jika belum ada ulasan di localStorage, atau jika isinya tidak sama dengan initialReviews
+        // kita akan menggunakan initialReviews sebagai dasar.
+        if (!reviews || reviews.length === 0) { // Cukup cek jika reviews null atau kosong
+            reviews = initialReviews;
+        } else { // Jika ada data di localStorage, gabungkan dengan initialReviews (hanya tambahkan yang belum ada)
+            const existingReviewKeys = new Set(reviews.map(r => r.name + r.date)); 
+            initialReviews.forEach(initialReview => {
+                // Periksa apakah ulasan awal sudah ada di data localStorage
+                const isInitialReviewExists = reviews.some(
+                    (review) => review.name === initialReview.name && review.date === initialReview.date
+                );
+                if (!isInitialReviewExists) {
+                    reviews.push(initialReview); 
                 }
-                
-                reviewElement.innerHTML = `
-                    <div class="review-avatar">${initials}</div>
-                    <div class="review-content">
-                        <div class="review-name">${review.name}</div>
-                        <div class="review-rating">${stars}</div>
-                        <div class="review-date">${review.date}</div>
-                        <div class="review-comment">${review.comment}</div>
-                    </div>
-                `;
-                
-                container.appendChild(reviewElement);
             });
         }
+        
+        // Selalu sortir ulang ulasan berdasarkan tanggal terbaru di atas
+        reviews.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        saveReviews(reviews); // Selalu simpan kembali (terutama jika ada penambahan/perubahan dari initialReviews)
+        return reviews;
+    }
 
-        // Fungsi untuk menangani pengiriman form ulasan
-        function addReview(event) {
-            event.preventDefault(); // Mencegah form submit dan refresh halaman
+    // Fungsi untuk menampilkan ulasan
+    function displayReviews() {
+        const reviews = loadReviews();
+        const container = document.getElementById('reviews-container');
+        
+        if (reviews.length === 0) {
+            container.innerHTML = '<div class="empty-reviews">Belum ada ulasan. Jadilah yang pertama!</div>';
+            return;
+        }
+        
+        container.innerHTML = ''; // Kosongkan container sebelum mengisi ulang
+        
+        reviews.forEach(review => {
+            const reviewElement = document.createElement('div');
+            reviewElement.className = 'review-item';
             
-            const nameInput = document.getElementById('review-name');
-            const ratingInput = document.getElementById('review-rating');
-            const commentInput = document.getElementById('review-comment');
-
-            const name = nameInput.value.trim(); // Gunakan .trim() untuk menghilangkan spasi kosong
-            const rating = parseInt(ratingInput.value);
-            const comment = commentInput.value.trim();
-
-            if (!name || rating === 0 || !comment) {
-                alert('Harap isi semua field dan berikan rating!');
-                return;
+            // Buat avatar dari inisial nama
+            const initials = review.name.split(' ').map(n => n[0]).join('').toUpperCase();
+            
+            // Buat bintang rating
+            let stars = '';
+            for (let i = 0; i < 5; i++) {
+                if (i < review.rating) {
+                    stars += '<i class="fas fa-star star"></i>'; // Bintang terisi
+                } else {
+                    stars += '<i class="far fa-star star"></i>'; // Bintang kosong
+                }
             }
-            
-            const today = new Date();
-            const dateStr = today.toISOString().split('T')[0]; // Format YYYY-MM-DD
-            
-            const reviews = loadReviews(); // Muat ulasan yang sudah ada
-            
-            const newReview = {
-                name,
-                rating,
-                comment,
-                date: dateStr
-            };
-            
-            reviews.unshift(newReview); // Tambahkan ulasan baru di awal array
-            saveReviews(reviews); // Simpan kembali ke localStorage
-            displayReviews(); // Tampilkan ulang ulasan
-            
-            // Reset form dan tampilan bintang
-            nameInput.value = '';
-            commentInput.value = '';
-            ratingInput.value = 0;
-            resetReviewStarRating();
-            
-            alert('Terima kasih atas ulasan Anda!');
-        }
 
-        // Fungsi untuk mengatur rating bintang di form
-        function setupReviewStarRating() {
-            const stars = document.querySelectorAll('.review-form .rating-input .star');
-            const ratingInput = document.getElementById('review-rating');
-            
-            stars.forEach(star => {
-                star.addEventListener('click', function() {
-                    const rating = parseInt(this.getAttribute('data-rating'));
-                    ratingInput.value = rating;
-                    
-                    // Update tampilan bintang
-                    stars.forEach((s, index) => {
-                        if (index < rating) {
-                            s.classList.add('fas');
-                            s.classList.remove('far');
-                        } else {
-                            s.classList.add('far');
-                            s.classList.remove('fas');
-                        }
-                    });
-                });
-
-                // Efek hover untuk bintang
-                star.addEventListener('mouseover', function() {
-                    const hoverRating = parseInt(this.getAttribute('data-rating'));
-                    stars.forEach((s, index) => {
-                        if (index < hoverRating) {
-                            s.style.color = '#FFC107'; // Warna saat hover
-                        } else {
-                            s.style.color = '#ccc'; // Warna default
-                        }
-                    });
-                });
-
-                star.addEventListener('mouseout', function() {
-                    const currentRating = parseInt(ratingInput.value);
-                    stars.forEach((s, index) => {
-                        if (index < currentRating) {
-                            s.classList.add('fas');
-                            s.classList.remove('far');
-                            s.style.color = '#FFC107';
-                        } else {
-                            s.classList.add('far');
-                            s.classList.remove('fas');
-                            s.style.color = '#ccc';
-                        }
-                    });
-                });
-            });
-        }
-
-        // Fungsi untuk mereset tampilan bintang rating di form
-        function resetReviewStarRating() {
-            const stars = document.querySelectorAll('.review-form .rating-input .star');
-            stars.forEach(star => {
-                star.classList.add('far');
-                star.classList.remove('fas');
-                star.style.color = '#ccc'; // Reset warna ke default
-            });
-        }
-
-        // Inisialisasi saat halaman dimuat
-        document.addEventListener('DOMContentLoaded', function() {
-            // Inisialisasi slider dan hamburger menu
-            showSlide(currentSlide); // Pastikan slider dimulai dengan benar
-            
-            // Inisialisasi fitur ulasan
-            displayReviews();
-            setupReviewStarRating();
-            
-            document.getElementById('review-form').addEventListener('submit', addReview);
+            reviewElement.innerHTML = `
+                <div class="review-avatar">${initials}</div>
+                <div class="review-content">
+                    <div class="review-name">${review.name}</div>
+                    <div class="review-rating">${stars}</div>
+                    <div class="review-date">${review.date}</div>
+                    <div class="review-comment">${review.comment}</div>
+                </div>
+            `;
+            container.appendChild(reviewElement);
         });
-    </script>
+    }
+
+    // Event listener untuk form ulasan
+    const reviewForm = document.getElementById('review-form');
+    const reviewNameInput = document.getElementById('review-name');
+    const reviewRatingInput = document.getElementById('review-rating');
+    const reviewCommentInput = document.getElementById('review-comment');
+    const ratingStars = document.querySelectorAll('.rating-input .star');
+
+    let selectedRating = 0;
+
+    ratingStars.forEach(star => {
+        star.addEventListener('click', () => {
+            selectedRating = parseInt(star.dataset.rating);
+            reviewRatingInput.value = selectedRating;
+            ratingStars.forEach((s, index) => {
+                if (index < selectedRating) {
+                    s.classList.add('fas');
+                    s.classList.remove('far');
+                } else {
+                    s.classList.remove('fas');
+                    s.classList.add('far');
+                }
+            });
+        });
+    });
+
+    reviewForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = reviewNameInput.value.trim();
+        const rating = parseInt(reviewRatingInput.value);
+        const comment = reviewCommentInput.value.trim();
+        const date = new Date().toISOString().split('T')[0]; // Format YYYY-MM-DD
+
+        if (name && rating > 0 && comment) {
+            const newReview = { name, rating, comment, date };
+            let reviews = loadReviews(); // Muat ulasan yang ada
+            reviews.unshift(newReview); // Tambahkan ulasan baru di paling depan
+            saveReviews(reviews); // Simpan kembali ulasan
+            displayReviews(); // Tampilkan ulasan yang sudah diperbarui
+
+            // Reset form
+            reviewNameInput.value = '';
+            reviewCommentInput.value = '';
+            reviewRatingInput.value = '0';
+            selectedRating = 0;
+            ratingStars.forEach(s => {
+                s.classList.remove('fas');
+                s.classList.add('far');
+            });
+        } else {
+            alert('Mohon lengkapi semua kolom ulasan dan berikan rating.');
+        }
+    });
+
+    // Panggil displayReviews saat halaman dimuat untuk menampilkan ulasan yang sudah ada
+    document.addEventListener('DOMContentLoaded', displayReviews);
+</script>
 </body>
 </html>
